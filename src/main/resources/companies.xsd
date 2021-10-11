@@ -1,0 +1,86 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.concretepage.com/article-ws"
+           targetNamespace="http://www.concretepage.com/article-ws" elementFormDefault="qualified">
+
+    <xs:element name="getCompanyByCodeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="companyCode" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCompanyByCodeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="companyInfo" type="tns:companyInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="companyInfo">
+        <xs:sequence>
+            <xs:element name="companyCode" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="location" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getAllComapniesRequest">
+        <xs:complexType/>
+    </xs:element>    
+    <xs:element name="getAllCompaniesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="articleInfo" type="tns:companyInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>   
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>     
+    <xs:element name="addCompanyRequest">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element name="companyCode" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="location" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addCompanyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>            
+                <xs:element name="companyInfo" type="tns:companyInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateCompanyRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="companyInfo" type="tns:companyInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateCompanyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteCompanyRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="companyCode" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteCompanyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>                   
+</xs:schema> 
